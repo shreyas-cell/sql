@@ -1,0 +1,74 @@
+18/10/2022
+=====================
+any:-
+select productname 
+from products
+where productid = any (select productid from orderdetails where quantity = 10);
+=========================
+rollback:-
+delete from employees where age = 27;  
+rollback;   
+
+commit:-
+delete from employees where age = 27;  
+commit;    
+============================
+date functions:-
+select curdate();
+select now();
+================================
+multiple joins:-
+select employee.first_name, employee.last_name, call.start_time, call.end_time, call_outcome.outcome_text
+from employee
+inner join call on call.employee_id = employee.id
+inner join call_outcome on call.call_outcome_id = call_outcome.id
+order by call.start_time asc;
+========================================
+joins:-
+inner join:-
+select orders.orderid, customers.customername, orders.orderdate
+from orders
+inner join customers on orders.customerid=customers.customerid;
+
+left join:-
+select customers.customername, orders.orderid
+from customers
+left join orders on customers.customerid = orders.customerid
+order by customers.customername;
+
+right join:-
+select orders.orderid, employees.lastname, employees.firstname
+from orders
+right join employees on orders.employeeid = employees.employeeid
+order by orders.orderid;
+=================================================
+group by:-
+select count(empid), dept
+from emp
+group by dept
+==================================
+having:-
+select count(empid), dept
+from emp
+group by dept
+having count(sal) > 5000;
+====================================
+count:-
+select count(empid)
+from emp;
+==================================
+avg:-
+select avg(sal)
+from emp;
+==========================
+sum:-
+select sum(sal)
+from emp;
+====================
+wildcards:-
+select * from emp
+where name like 'osh%';
+===================
+string:-
+select concat('amazon', '.com');
+select lower('sql tutorial is fun!');
