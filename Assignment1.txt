@@ -1,0 +1,25 @@
+Assignment 1
+Q1)
+a) select * from employee;
+b)select ename,eno from employee;
+c)select ename,hiredate,sal from employee;
+d)select ename,(sal+300) as sal from employee;
+e)select ename,(sal*12+100) as sal from employee;
+f)select ename,sal from employee where comm=null;
+g)select distinct(dept) from employee;
+h)select distinct(jobs) from employee;
+i)select sal from employee where sal<comm;
+j)select sal from employee where sal between 3000 and 4000;
+k)select * from employee where mgr in(7902,7566,7788)
+l)select ename from employee where ename like s%;
+m)select * from employee where sal>4100;
+n)select * from employee order by hiredate;
+o)select * from employee order by dept,sal desc;
+p)select ename,job from employee where hiredate between '1981/02/20' and '1981/05/01';
+q)select ename,dept from employee where dept in(20,30) order by ename;
+r)select ename,sal from employee where sal >1200 and dept=10 or dept=40;
+s)select ename ,hiredate from employee where year(hiredate)='1981';
+t)select * from employee where mgr=null;
+u)select ename,sal from employee where comm!=null;
+v)select ename from employee where name like '_a';
+w)select ename ,job from employee where dept=20 and mgr=7788;
