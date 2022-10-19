@@ -1,0 +1,48 @@
+assignment 2
+q1)
+a)select desc from teacher;
+b)select * from teacher;
+c)select * from teacher where department='history';
+d)select * from teacher where department='maths' and sex='f';
+e)select name,doj from teacher order by doj;
+f)select name,salary,age from teacher where sex='m';
+g)select name,salary,age,(salary*0.15) as bonus from teacher;
+h)select name,doj from teacher where year(doj)='1997';
+i)select * from teacher limit 3;
+j)select * from teacher offset (@skip) rows fetch next (3) rows only ;
+k)insert into teacher (no,name, age, department, doj, salary,sex)
+values (9,'raja',26,'computer','1995-05-13',23000,'m');
+
+i) values inserted sucessfully
+ii) 3
+iii) 35
+iv)23500
+v)300000
+
+q2)
+a)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where salesman.name='david';
+b)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where salesman.city='london';
+c)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where orders.customer_id=3004;
+d)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where orders.purchase_amount>(select avg(orders.purhase_amount) from orders) and orders.order_date='2012-10-10';
+e)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where salesman.city='paris';
+f)select sum(commission) from salesman as s inner join orders as o on o.salesman_id=s.salesman_id where
+ (select salesman_id as id from salesman where city='newyork';) = (select salesman_id as id from salesman where city='newyork';);
+g)select order_no,purchase_amount,order_date,customer_id,salesman_id from orders inner join salesman on orders.salesman_id=salesman.salesman_id 
+where orders.purchase_amount<(select avg(orders.purhase_amount) from orders) and orders.order_date='2012-09-10';
+h)select name from salesman;
+
+
+q3)
+i)select b.book_name,b.author_name,b.price,i.quantity_issued from books as b innner join issued as i on b.book_id=i.book_id where b.publishers='first publ';
+ii)select b.book_name from books as b right join issued as i on b.book_id=i.book_id where b.type='text';
+iii)select book_name,price from books order by price;
+iv)select (price+50) as 'new price' from books where publishers='epb';
+v) 5
+vi)750
+vii)fast cook,lata kapoor
+my first c++,brain and brook
