@@ -1,0 +1,82 @@
+Assignment 3
+Q1)
+1)delimiter $
+create function display()
+returns varchar(130);
+deterministic
+begin
+return select * from employee;
+end$
+delimiter
+select display();
+
+2)delimiter $
+create function add(empno int,ename varchar(10),job varchar(10),manager int,hiredate date,salary int,commission int,deptno int)
+returns varchar(10);
+deterministic
+begin 
+insert into employee(empno int,ename varchar(10),job varchar(10),manager int,hiredate date,salary int,commission int,deptno int)
+values(empno,ename,job,manager,hiredate,salary ,commission,deptno);
+return "inserted sucessfully";
+end $
+delimiter
+select add(8088,'Ramesh','clerk',8789,'2022-08-09',4500,null,10);
+
+3)delimiter $
+create function count_total()
+returns int;
+deterministic
+begin
+return select count(empno) from employee;
+end$
+delimiter
+select count_total();
+
+4)delimiter $
+create function getinfo(no int)
+returns varchar(130);
+deterministic
+begin
+return select * from employee where deptno=no;
+end$
+delimiter
+select getinfo(30);
+
+5)delimiter $
+create function sortbydate()
+returns varchar(130);
+deterministic
+begin
+return select * from employee order by hiredate;
+end$
+delimiter
+select sortbydate();
+
+6)delimiter $
+create function updatesal()
+returns varchar(13);
+deterministic
+begin
+update employee set salary=500 where empno=8902;
+return 'updated sucessfully';
+end$
+delimiter
+select updatesal();
+
+7)delimiter $
+create function deletelast()
+returns varchar(13);
+deterministic
+begin
+delete from employee where empno=8902;
+return 'deleted sucessfully' ;
+end$
+delimiter
+select deletelast();
+
+
+
+
+
+
+
