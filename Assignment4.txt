@@ -1,0 +1,31 @@
+Assignment 4
+select * from hospital;
+select concat(name,' ','of age',' ',age,' got admitted on ',dateofadm) from hospital;
+alter table hospital add address varchar(20);
+alter table hospital modify column address varchar(25);
+rename table hospital to hospital_data;
+
+select * from hospital_data;
+
+CREATE TABLE Hospital_data_updated (
+    pno INT PRIMARY KEY,
+    age int,
+    newage int
+);
+drop table hospital_data_updated;
+SET SQL_SAFE_UPDATES=0;
+update hospital_data set  age=31 where pno=7;
+SET SQL_SAFE_UPDATES=1;
+DELIMITER $$  
+  
+CREATE TRIGGER after_update_hospital 
+AFTER UPDATE  
+ON hospital_data FOR EACH ROW  
+BEGIN  
+    INSERT into hospital_data_updated VALUES (pno,age);  
+END $$  
+  
+DELIMITER ;  
+select * from hospital_data_updated;
+truncate table hospital_data;
+drop table hospital_data;
